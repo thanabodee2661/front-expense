@@ -7,7 +7,7 @@ import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,64 @@
+<div class="row m-5">
+  <div class="col-12">
+    <div class="card border border-dark">
+      <div class="card-header bg-dark text-white">
+        <h3>{{txtHeader | uppercase}}</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead class="bg-secondary text-white">
+                  <tr>
+                    <th scope="col" class="text-center">Date</th>
+                    <th scope="col">info</th>
+                    <th scope="col" class="text-right">amount</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-light">
+                  <tr>
+                    <th scope="row" class="text-center">{{'25/01/2020'}}</th>
+                    <td>ค่าขนม</td>
+                    <td class="text-right">500</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-center">{{'25/01/2020'}}</th>
+                    <td>ค่าขนม</td>
+                    <td class="text-right">500</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="text-center">{{'25/01/2020'}}</th>
+                    <td>ค่าขนม</td>
+                    <td class="text-right">500</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="form-group">
+              <label for="exampleInputEmail1">รายละเอียด</label>
+              <input type="email" class="form-control" id="inputInfo">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">จำนวนเงิน</label>
+              <input type="email" class="form-control" id="inputAmount">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>&nbsp;</label>
+              <button class="btn btn-success w-100">Upload Excel</button>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary w-100">บันทึก</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
