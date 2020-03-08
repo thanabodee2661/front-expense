@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PipeModule } from './pipe/pipe.module';
+import { ShareModule } from 'src/share/share.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,7 @@ import { PipeModule } from './pipe/pipe.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PipeModule
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]
