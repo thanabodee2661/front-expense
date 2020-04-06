@@ -22,8 +22,8 @@
                   </div>
                   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="Username" formControlName="username">
                 </div>
-                <small class="text-danger" *ngIf="validateUsername('username', 'required')">โปรดกรอก username</small>
-                <small class="text-danger" *ngIf="validateUsername('username', 'minlength')">โปรดกรอก username มากกว่า 8 ตัว</small>
+                <small class="text-danger" *ngIf="validateSignIn('username', 'required')">โปรดกรอก username</small>
+                <small class="text-danger" *ngIf="validateSignIn('username', 'minlength')">โปรดกรอก username มากกว่า 8 ตัว</small>
               </div>
               <div class="col-12 mb-3">
                 <div class="input-group">
@@ -32,7 +32,9 @@
                   </div>
                   <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="Password" formControlName="password">
                 </div>
-                <small class="text-danger">โปรดกรอก password</small>
+                <small class="text-danger" *ngIf="validateSignIn('password', 'required')">โปรดกรอก password</small>
+                <small class="text-danger" *ngIf="validateSignIn('password', 'minlength')">โปรดกรอก password มากกว่า 8 ตัว</small>
+                <small class="text-danger" *ngIf="validateSignIn('password', 'pattern')">โปรดกรอกรูปแบบ password ให้ถูกต้อง</small>
               </div>
               <div class="col-12" >
                 <button type="submit" class="btn btn-primary float-right">{{'sign-in' | lowercase}}</button>

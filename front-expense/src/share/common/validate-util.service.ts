@@ -9,20 +9,37 @@ export class ValidateUtilService {
 
   isEmpty(...values: string[]) {
     for (const value of values) {
-      if (typeof(value) === 'undefined') {
+      if (typeof(value) === 'undefined' || value === null || value === '') {
         return true;
-      } else if (value || value !== null || value.trim().length > 0) {
-        return false;
+      } else {
+        if (!(typeof(value) === 'string')) {
+          return false;
+        } else {
+          if (value.trim && value.trim().length === 0) {
+            return false;
+          } else {
+            return true;
+          }
+        }
       }
     }
     return true;
   }
 
   isNotEmpty(...values: string[]) {
-    console.log(values)
     for (const value of values) {
-      if (typeof(value) === 'undefined' || !value || value === null || value.trim().length === 0) {
+      if (typeof(value) === 'undefined' || value === null || value === '') {
         return false;
+      } else {
+        if (!(typeof(value) === 'string')) {
+          return true;
+        } else {
+          if (value.trim && value.trim().length > 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
       }
     }
     return true;
