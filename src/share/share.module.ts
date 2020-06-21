@@ -4,22 +4,37 @@ import { FormatPipe } from './pipe/format/format.pipe';
 import { CommonService } from './common/common.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ValidateUtilService } from './common/validate-util.service';
+import { LoadingComponent } from './loading/loading.component';
+import { LoginService } from 'src/app/login/login.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { Interceptors } from './common/interceptors';
 
 @NgModule({
   declarations: [
-    FormatPipe
+    FormatPipe,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule
   ],
   providers: [
     CommonService,
     AuthGuardService,
     AuthService,
-    ValidateUtilService
+    ValidateUtilService,
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptors,
+      multi: true
+    },
+  ],
+  exports: [
+    LoadingComponent
   ]
 })
 export class ShareModule { }
