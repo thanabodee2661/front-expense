@@ -14,16 +14,6 @@ export class Interceptors implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         this.loadingService.show();
         return next.handle(req).pipe(
-            tap(
-                (event: HttpEvent<any>) => {
-                    if (event instanceof HttpResponse) {
-                        this.loadingService.hide();
-                    }
-                },
-                (err: any) => {
-
-                }
-            ),
             finalize(() => {
                 this.loadingService.hide();
             })

@@ -11,11 +11,11 @@ export class CommonService {
 
   constructor(private http: HttpClient, private loadingService: LoadingService) { }
 
-  get<T>(url, param) {
+  get<T>(url, param): Observable<any> {
     return this.http.get<T>(`${environment.host}${url}`, param);
   }
 
-  post<T>(url, param) {
+  post<T>(url, param): Observable<any> {
     return this.http.post<T>(`${environment.host}${url}`, param);
   }
 }
