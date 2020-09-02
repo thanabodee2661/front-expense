@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ export class HomeComponent implements OnInit {
 
   componentShow = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.setData();
@@ -20,6 +21,10 @@ export class HomeComponent implements OnInit {
 
   setComponent(component) {
     this.componentShow = component;
+  }
+
+  onClickChangePage(page: string) {
+    this.router.navigateByUrl('home/' + page);
   }
 
 }
