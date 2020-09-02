@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import $ from 'jquery';
+import { ActivatedRoute } from '@angular/router';
 
 declare var XLSX: any;
 
@@ -9,11 +10,14 @@ declare var XLSX: any;
 })
 export class ExpenseComponent implements OnInit {
 
-  @Input() txtHeader;
+  txtHeader;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      this.txtHeader = data.page;
+    });
   }
 
   openUploadFile() {

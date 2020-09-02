@@ -13,6 +13,6 @@ export class LoadingComponent implements OnInit {
     this.ngxService.start();
     setTimeout(() => {
       this.ngxService.stop();
-    }, 5000);
+    }, 1000);
   }
 }
