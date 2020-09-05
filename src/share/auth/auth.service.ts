@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   public checkTokenAuth() {
-    const token = window.localStorage.getItem(this.key);
+    const token = this.getToken();
     if (token) {
       this.isLoggetedIn = true;
     } else {
@@ -32,5 +32,9 @@ export class AuthService {
     }
 
     return this.getLoggetedIn();
+  }
+
+  public getToken() {
+    return window.localStorage.getItem(this.key);
   }
 }

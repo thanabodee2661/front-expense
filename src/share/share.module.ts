@@ -9,7 +9,7 @@ import { ValidateUtilService } from './common/validate-util.service';
 import { LoadingComponent } from './loading/loading.component';
 import { LoginService } from 'src/app/login/login.service';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { Interceptors } from './common/interceptors';
+import { Interceptors } from './common/interceptors.service';
 
 @NgModule({
   declarations: [
