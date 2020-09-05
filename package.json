@@ -28,6 +28,7 @@
     "ng-block-ui": "^3.0.0-beta.12",
     "ngx-ui-loader": "^7.2.2",
     "rxjs": "~6.3.3",
+    "sweetalert2": "^8.0.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

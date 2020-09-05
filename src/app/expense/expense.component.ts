@@ -1,8 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
-import $ from 'jquery';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ValidateUtilService } from 'src/share/common/validate-util.service';
+import { ExpenseService } from './expense.service';
+import { AlertService } from 'src/share/common/alert.service';
+import $ from 'jquery';
 
 declare var XLSX: any;
+
+export class ExpenseDetail {
+  expenseId: string;
+  expenseDate: string;
+  description: string;
+  amount: string;
+}
+
+export class ExpenseDetailList {
+  expenseDetailList: ExpenseDetail[] = [];
+  expenseType: string;
+}
 
 @Component({
   selector: 'app-expense',
@@ -10,13 +26,27 @@ declare var XLSX: any;
 })
 export class ExpenseComponent implements OnInit {
 
-  txtHeader;
+  txtHeader: string;
+  formControl;
+  expenseDetailList: ExpenseDetailList = new ExpenseDetailList();
+  exepnseDetail: ExpenseDetail = new ExpenseDetail();
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private validateUtil: ValidateUtilService,
+    private expenseService: ExpenseService,
+    private alertService: AlertService
+    ) { }
 
   ngOnInit() {
+    this.formControl = this.formBuilder.group({
+      description: [''],
+      amount: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
+    });
     this.activatedRoute.data.subscribe(data => {
       this.txtHeader = data.page;
+      this.expenseDetailList.expenseType = data.page;
     });
   }
 
@@ -48,6 +78,28 @@ export class ExpenseComponent implements OnInit {
 
     // Tell JS To Start Reading The File.. You could delay this if desired
     reader.readAsBinaryString(oFile);
+  }
+
+  addExpenseList() {
+    const currentDate = new Date();
+    this.exepnseDetail = {
+      expenseId: '',
+      expenseDate: new Date().getTime().toString(),
+      description: this.formControl.controls.description.value,
+      amount: this.formControl.controls.amount.value
+    };
+
+    this.expenseDetailList.expenseDetailList.push(this.exepnseDetail);
+    this.formControl.reset();
+  }
+
+  save() {
+    this.expenseService.save(this.expenseDetailList).subscribe(
+      result => {
+        if (result.status === 200) {
+          this.alertService.alertSuccess();
+        }
+      });
   }
 
 }
