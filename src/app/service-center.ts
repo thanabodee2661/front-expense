@@ -1,5 +1,6 @@
 export const service = {
   host: 'http://localhost:3000',
   expensePath: '/expense',
-  saveExpenseService: '/saveExpense'
+  saveExpenseService: '/saveExpense',
+  getExpenseListService: '/getExpenseList'
 };
