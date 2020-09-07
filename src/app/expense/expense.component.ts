@@ -47,6 +47,7 @@ export class ExpenseComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.txtHeader = data.page;
       this.expenseDetailList.expenseType = data.page;
+      this.getExpenseList();
     });
   }
 
@@ -100,6 +101,20 @@ export class ExpenseComponent implements OnInit {
           this.alertService.alertSuccess();
         }
       });
+  }
+
+  getExpenseList() {
+    const param = {
+      expenseType: this.expenseDetailList.expenseType,
+      expenseDate: new Date().getTime()
+    };
+    this.expenseService.getExpenseList(param).subscribe(
+      result => {
+        if (result.status === 200) {
+          this.expenseDetailList.expenseDetailList = result.content;
+        }
+      }
+    );
   }
 
 }

@@ -26,7 +26,7 @@ export class Interceptors implements HttpInterceptor {
                 (event: HttpEvent<any>) => { },
                 (error: HttpErrorResponse) => {
                     console.log(error);
-                    if (error.status === 500) {
+                    if (error.status === 500 || error.status === 0) {
                         this.alertService.alertErrorStatus500();
                     } else if (error.status === 401) {
                         this.alertService.alertErrorStatus401();
