@@ -25,12 +25,25 @@ export class Interceptors implements HttpInterceptor {
             tap(
                 (event: HttpEvent<any>) => { },
                 (error: HttpErrorResponse) => {
-                    console.log(error);
-                    if (error.status === 500 || error.status === 0) {
-                        this.alertService.alertErrorStatus500();
-                    } else if (error.status === 401) {
-                        this.alertService.alertErrorStatus401();
+                    switch (error.status) {
+                        case 500:
+                        case 0:
+                            this.alertService.alertErrorStatus500();
+                            break;
+                        case 401:
+                            this.alertService.alertErrorStatus401();
+                            break;
+                        case 403:
+                            this.alertService.alertErrorStatus403();
+                            break;
                     }
+                    // if (error.status === 500 || error.status === 0) {
+                    //     this.alertService.alertErrorStatus500();
+                    // } else if (error.status === 401) {
+                    //     this.alertService.alertErrorStatus401();
+                    // } else if (error.status === 403) {
+                    //     this.alertService.alertErrorStatus403();
+                    // }
                 }
             ),
             finalize(() => {

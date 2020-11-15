@@ -47,6 +47,15 @@ export class AlertService {
   public alertErrorStatus401() {
     Swal.fire({
       title: 'พบข้อผิดพลาด!!!',
+      text: 'คุณไม่ได้รับอนุญาตให้เข้าถึงข้อมูล',
+      type: 'error',
+      confirmButtonText: 'ตกลง'
+    });
+  }
+
+  public alertErrorStatus403() {
+    Swal.fire({
+      title: 'พบข้อผิดพลาด!!!',
       text: 'คุณไม่มีสิทธิ์เข้าถึงข้อมูล',
       type: 'error',
       confirmButtonText: 'ตกลง'

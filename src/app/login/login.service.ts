@@ -13,19 +13,10 @@ export class LoginService {
 
   constructor(
     private commonService: CommonService,
-    private authService: AuthService,
-    private router: Router,
-    private validateUtil: ValidateUtilService
     ) { }
 
   public login(param) {
-    this.commonService.post(this.logInPath, param).subscribe((result) => {
-      if (this.validateUtil.isNotEmpty(result.token)) {
-        this.authService.setLoggetedIn(true, result.token);
-        // tslint:disable-next-line: no-unused-expression
-        this.router.navigateByUrl('home');
-      }
-    });
+    return this.commonService.post(this.logInPath, param);
   }
 
 }

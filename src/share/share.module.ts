@@ -31,7 +31,7 @@ import { Interceptors } from './common/interceptors.service';
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptors,
       multi: true
-    },
+    }, 
   ],
   exports: [
     LoadingComponent
