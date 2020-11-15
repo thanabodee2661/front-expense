@@ -3,4 +3,4 @@ export const service = {
   expensePath: '/expense',
   saveExpenseService: '/saveExpense',
   getExpenseListService: '/getExpenseList'
-};
+}

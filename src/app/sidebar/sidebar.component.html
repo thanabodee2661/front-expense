@@ -1,0 +1,40 @@
+<nav id="sidebar" class="active">
+  <div class="custom-menu">
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+  <div class="sidebar-menu">
+    <h1 class="text-center text-light"><i class="fas fa-heart"></i> NAMTAN</h1>
+    <hr>
+    <div class="pl-3" style="background: #494ca2;">
+      <ul class="list-unstyled components mb-5">
+        <li [class.active]="isActive('/home')">
+          <a routerLink="/home"><span class="fa fa-home mr-3"></span> Home</a>
+        </li>
+        <li [class.active]="isActive('/home/expense')">
+          <a routerLink="/home/expense"><span class="fa fa-user mr-3"></span> Expense</a>
+        </li>
+        <li [class.active]="isActive('/home/income')">
+          <a routerLink="/home/income"><span class="fa fa-user mr-3"></span> Income</a>
+        </li>
+        <li>
+          <a href="#submenu" data-toggle="collapse"><span class="fa fa-briefcase mr-3"></span> Portfolio</a>
+        </li>
+        <div class="collapse" id="submenu">
+          <ul class="list-unstyled pl-3">
+            <li>
+              <a href="#"><span class="fa fa-briefcase mr-3"></span> Portfolio 1</a>
+            </li>
+          </ul>
+        </div>
+        <li>
+          <a href="#"><span class="fa fa-sticky-note mr-3"></span> Blog</a>
+        </li>
+        <li>
+          <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

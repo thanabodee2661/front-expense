@@ -1,15 +1,14 @@
-<div class="row justify-content-center m-5" *ngIf="isSubmitted">
+<div class="row justify-content-center m-5" *ngIf="isSubmitted && !isValid">
   <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
     <div class="alert alert-danger" role="alert">
       username or password invalid!!!
     </div>
   </div>
 </div>
-
 <div class="row justify-content-center m-5">
-  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-    <div class="card border-dark">
-      <div class="card-header bg-dark text-white">
+  <div class="col-sm-12 col-md-6 col-lg-5 col-xl-3">
+    <div class="card shadow ">
+      <div class="card-header bg-blue text-white">
         <h2>{{'sign-in' | uppercase}}</h2>
       </div>
       <div class="card-body">
@@ -23,8 +22,8 @@
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                   aria-describedby="Username" formControlName="username">
               </div>
-              <small class="text-danger" *ngIf="validateSignIn('username', 'required') && isSubmitted">โปรดกรอก username</small>
-              <small class="text-danger" *ngIf="validateSignIn('username', 'minlength') && isSubmitted">โปรดกรอก username มากกว่า 8 ตัว</small>
+              <small class="text-danger" *ngIf="formLoginControls.username.errors?.required && isSubmitted">โปรดกรอก username</small>
+              <small class="text-danger" *ngIf="formLoginControls.username.errors?.minlength && isSubmitted">โปรดกรอก username มากกว่า 8 ตัว</small>
             </div>
             <div class="col-12 mb-3">
               <div class="input-group">
@@ -34,27 +33,34 @@
                 <input type="password" class="form-control" placeholder="Password" aria-label="Password"
                   aria-describedby="Password" formControlName="password">
               </div>
-              <small class="text-danger" *ngIf="validateSignIn('password', 'required') && isSubmitted">โปรดกรอก password</small>
-              <small class="text-danger" *ngIf="validateSignIn('password', 'minlength') && isSubmitted">โปรดกรอก password มากกว่า 8 ตัว</small>
-              <small class="text-danger" *ngIf="validateSignIn('password', 'pattern') && isSubmitted">โปรดกรอกรูปแบบ password ให้ถูกต้อง</small>
+              <small class="text-danger" *ngIf="formLoginControls.password.errors?.required && isSubmitted">โปรดกรอก password</small>
+              <small class="text-danger" *ngIf="formLoginControls.password.errors?.minlength && isSubmitted">โปรดกรอก password มากกว่า 8 ตัว</small>
+              <small class="text-danger" *ngIf="formLoginControls.password.errors?.pattern && isSubmitted">โปรดกรอกรูปแบบ password ให้ถูกต้อง</small>
+            </div>
+            <div class="col-12 mb-3">
+              <button type="submit" class="btn bg-blue w-100 text-center text-light">{{'sign-in' | uppercase}}</button>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn btn-primary w-100 text-center">{{'sign-in' | lowercase}}</button>
+              <button type="button" class="btn bg-red w-100 text-center text-light">{{'register' | uppercase}}</button>
             </div>
           </div>
         </form>
         <div class="mt-2 row">
           <div class="col-12">
             <div class="w-100" style="border: 1px solid; background: #ccc; margin: 12px 0; opacity: 0.3;"></div>
-            <div style="position: absolute; background: #fff; top: -12%; left: 47%; padding: 0 6px 0; width: 30px;">
-              or
-            </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 text-center">
-            <button type="button" class="btn btn-primary rounded-circle" (click)="facebookSignIn();">
+          <div class="col-6 text-center">
+            <button type="button" class="btn btn-primary w-100 h-100" (click)="facebookSignIn();">
               <i class="fab fa-facebook-f"></i>
+              <span>&nbsp;FACEBOOK</span>
+            </button>
+          </div>
+          <div class="col-6 text-center">
+            <button type="button" class="btn btn-danger w-100 h-100" (click)="facebookSignIn();">
+              <i class="fab fa-google"></i>
+              <span>&nbsp;GOOGLE</span>
             </button>
           </div>
         </div>
@@ -62,3 +68,19 @@
     </div>
   </div>
 </div>
+<footer class="position-fixed fixed-bottom bg-blue h-25 w-100" style="z-index: -1;">
+  <div class="row position-absolute w-100 h-100">
+    <div class="col-6 col-md-3 bg-blue rounded-circle w-25 h-100 " style="top: -45%; left: 15px;">
+      &nbsp;
+    </div>
+    <div class="col-6 col-md-3 bg-blue rounded-circle w-25 h-100 " style="top: -45%; left: 15px;">
+      &nbsp;
+    </div>
+    <div class="col-6 col-md-3 bg-blue rounded-circle w-25 h-100 " style="top: -45%; left: 15px;">
+      &nbsp;
+    </div>
+    <div class="col-6 col-md-3 bg-blue rounded-circle w-25 h-100 " style="top: -45%; left: 15px;">
+      &nbsp;
+    </div>
+  </div>
+</footer>

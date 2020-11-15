@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { LoginService } from './login.service';
 import { ValidateUtilService } from 'src/share/common/validate-util.service';
+import { AuthService } from 'src/share/auth/auth.service';
+import { Router } from '@angular/router';
 
 declare var FB: any;
 
@@ -12,12 +14,15 @@ declare var FB: any;
 export class LoginComponent implements OnInit {
 
   public formLogin;
-  public isSubmitted;
+  public isSubmitted = false;
+  public isValid = true;
 
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private validateUtil: ValidateUtilService
+    private validateUtil: ValidateUtilService,
+    private authService: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -31,18 +36,23 @@ export class LoginComponent implements OnInit {
     this.facebookInit();
   }
 
+  get formLoginControls() {
+    return this.formLogin.controls;
+  }
+
   public signIn() {
     this.isSubmitted = true;
     if (this.formLogin.valid) {
-      this.loginService.login(this.formLogin.value);
+      this.loginService.login(this.formLogin.value).subscribe((result) => {
+        if (this.validateUtil.isNotEmpty(result.token)) {
+          this.authService.setLoggetedIn(true, result.token);
+          // tslint:disable-next-line: no-unused-expression
+          this.router.navigateByUrl('home');
+        } else {
+          this.isValid = false;
+        }
+      });
     }
-  }
-
-  public validateSignIn(controlName, validateKey) {
-    if (this.validateUtil.isNotEmpty(this.formLogin.controls[controlName].errors)) {
-      return this.formLogin.controls[controlName].errors[validateKey];
-    }
-    return false;
   }
 
   public facebookInit() {

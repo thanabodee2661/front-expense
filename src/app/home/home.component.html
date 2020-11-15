@@ -1,32 +1,20 @@
-<div class="d-flex" id="wrapper">
-
-  <!-- Sidebar -->
-  <div class="bg-dark border-right border-dark text-white" id="sidebar-wrapper">
-    <div class="sidebar-heading">LOGO</div>
-    <div class="list-group list-group-flush" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action bg-secondary text-white" id="list-expense-list" data-toggle="collapse" href="#list-income-expense">Income-Expense</a>
-      <div class="list-group list-group-flush" id="list-tab" role="tablist">
-        <div class="collapse show" id="list-income-expense">
-          <a class="list-group-item list-group-item-action bg-light" id="list-expense" routerLink="expense">Expense</a>
-          <a class="list-group-item list-group-item-action bg-light" id="list-income" routerLink="income">Income</a>
-        </div>
-      </div>
-      <a class="list-group-item list-group-item-action bg-secondary text-white" id="list-graph-list" routerLink="graph">Graph</a>
-    </div>
+<div class="wrapper d-flex align-items-stretch">
+  <app-sidebar></app-sidebar>
+  <div id="content" class="sidebar-on">
+    <h2 class="mb-4">Sidebar #03</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
   </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white border-bottom">
-      <a class="btn btn-light" id="menu-toggle" data-toggle="collapse" href="#sidebar-wrapper"><span class="navbar-toggler-icon"></span></a>
-    </nav>
-
-    <div class="container-fluid">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <!-- /#page-content-wrapper -->
-
 </div>
