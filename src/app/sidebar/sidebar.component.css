@@ -11813,6 +11813,10 @@ h5,
   height: 100%;
 }
 
+.custom-menu {
+  z-index: 1;
+}
+
 #sidebar .h6 {
   color: #fff;
 }
